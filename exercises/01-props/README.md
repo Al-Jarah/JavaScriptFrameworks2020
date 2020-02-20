@@ -25,10 +25,10 @@ To achieve this, please use default props
 
 ### Developer Instructions
 
-1.  Create a folder name components inside of the "exercises/01-props/src" folder
-2.  Create a "Welcome" component
-3.  The "Welcome" component should import react
-4.  The "Welcome" component should render the proper to the screen using the h1 tags
+1. Create a folder name components inside of the "exercises/01-props/src" folder
+2. Create a "Welcome" component
+3. The "Welcome" component should import react
+4. The "Welcome" component should render the prop to the screen using the h1 tags
 
 ```bash
 <Welcome name="Jamal" />
@@ -38,7 +38,7 @@ To achieve this, please use default props
 
 ### Example
 
-![](demo.png)
+![](demo.png alt:demo)
 
 ### SLIDE
 
