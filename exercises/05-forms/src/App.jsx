@@ -1,10 +1,26 @@
 import React, { useState } from "react";
 import "./App.css";
-// Import data from "assets/countries.json" and "assets/states.json" here
+import countries from "./assets/countries.json";
+import states from "./assets/states.json";
 
 function App() {
+  
+    const [values, setValues] = useState({});
+    const [displayMessage, setDisplayMessage] = useState(false);
+    const newItem = () => {
+      setDisplayMessage([...displayMessage, ""]);}
+    const handleChange = e => {
+      e.preventDefult();
+      setDisplayMessage(true);
+      setValues({
+        ...values,
+        [e.target.name]: e.target.value
+      });
+    }
+    
+    
   return (
-    <form className="container mt-4">
+    <form className="container mt-4" >
       {/* You will need to handle form submission */}
       <div className="form-group">
         <label htmlFor="firstName" className="control-label">
@@ -15,6 +31,8 @@ function App() {
           name="firstName"
           type="text"
           className="form-control"
+          value={values.firstName}
+          onChange={handleChange}
         />
       </div>
       <div className="form-group">
@@ -26,6 +44,7 @@ function App() {
           name="lastName"
           type="text"
           className="form-control"
+          onChange={handleChange}
         />
       </div>
       <div className="form-group">
@@ -37,6 +56,7 @@ function App() {
           name="addressLine1"
           type="text"
           className="form-control"
+          onChange={handleChange}
         />
         <p className="help-block text-muted">
           Street Address, P.O. Box, Company Name, C/O
@@ -54,7 +74,19 @@ function App() {
           State / Province / Region
         </label>
         {/* Loop through the states you imported here */}
-        <select id="state" name="state" className="form-control" />
+        <select id="state" name="state" className="form-control">
+        <option value=""> Please Select An option</option>
+          {
+            states.map((state)=>{
+              console.log(state, typeof state);
+              return (
+                <option>
+                  {state}
+                </option>
+              );
+            })
+          }
+          </select>
       </div>
 
       <div className="form-group">
@@ -66,6 +98,9 @@ function App() {
           name="postalCode"
           type="text"
           className="form-control"
+          onChange={handleChange}
+          value={displayMessage}
+
         />
       </div>
 
@@ -74,9 +109,21 @@ function App() {
           Country
         </label>
         {/* Loop through the countries you imported here */}
-        <select id="country" name="country" className="form-control" />
+        <select id="country" name="country" className="form-control" >
+        <option value=""> Please Select An option</option>
+          {
+            countries.map((country)=>{
+              console.log(country, typeof country);
+              return (
+                <option>
+                  {country}
+                </option>
+              );
+            })
+          }
+        </select>
       </div>
-      <button type="submit" className="btn btn-primary">
+      <button type="submit" className="btn btn-primary" onClick={newItem}>
         Submit
       </button>
 
@@ -84,11 +131,14 @@ function App() {
        * Find a way to only display this once the form has been submitted.
        * Hint: You will need to change "false" below with something else
        */}
-      {false && (
+      {displayMessage && (
         <div className="card card-body bg-light mt-4 mb-4">
           Results:
           <ul className="list-unstyled mb-0">
             {/* Add <li></li> tags here */}
+       {displayMessage.map((list)=>{
+         return(<li>{list}</li>)
+      })}
           </ul>
         </div>
       )}

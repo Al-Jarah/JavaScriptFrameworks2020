@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-// Import LessText here
+import LessText from "./LessText";
 // Import CharacterCount here
 
 function App() {
