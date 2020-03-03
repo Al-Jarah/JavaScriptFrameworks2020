@@ -2,15 +2,50 @@ import React, { useState } from "react";
 import "./App.css";
 
 const GroceryList = () => {
+
+  const [groceryItem, setGroceryItem] = useState();
+  const [cost,setCost] = useState();
+  const [groceryList,setGroceryList] = useState([]);
+
+
+  const newItem = () => {
+   
+  };
+  const updateItem = (userInput, index) => {
+    const newgroceryItem = [...groceryItem];
+    newgroceryItem[index] = userInput;
+    setGroceryItem(newgroceryItem);
+  };
+  const deleteItem = index => {
+    setGroceryItem(
+      groceryItem.filter((item, currentIndex) => currentIndex !== index)
+    );
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const obj = {
+      item:groceryItem,
+      cost:cost
+    }
+ const temp = [...groceryList];
+    temp.push(obj);
+    console.log(temp)
+    setGroceryList(temp)
+
+  }
   return (
     <div className="container">
       <div className="card card-body bg-light mb-2">
-        <form className="form-inline">
+        <form className="form-inline" onSubmit={handleSubmit}>
           <input
             className="form-control"
             type="text"
+            name="item"
             placeholder="Name of grocery item..."
             aria-label="Name of grocery item..."
+            onChange = {(e)=> setGroceryItem(e.target.value)}
+            
           />
           <input
             className="form-control"
@@ -19,9 +54,10 @@ const GroceryList = () => {
             step=".01"
             placeholder="Cost of grocery Item..."
             aria-label="Cost of grocery Item..."
+            onChange = {(e)=> setCost(e.target.value)}
           />
           <div>
-            <button type="submit" className="btn btn-success">
+            <button type="submit" className="btn btn-success" onClick={newItem}>
               Add
             </button>
           </div>
@@ -31,13 +67,19 @@ const GroceryList = () => {
         <h1 className="h4">Grocery List</h1>
         <table className="table table-compact">
           <thead>
+          {/* {groceryItem.map((item, index) =>{return()})} */}
             <tr>
               <th>Item</th>
               <th>Cost</th>
               <th></th>
             </tr>
           </thead>
-          <tbody>
+          <tbody
+          groceryList.map({userInput, inedx}=>{
+          return ({groceryItem.map(userInput, index) => {
+               <td> {groceryItem}</td>
+          }});
+          }
             {/**
              * Complete me. (You can use something else instead of a table if you like)
              * @example
@@ -51,7 +93,7 @@ const GroceryList = () => {
              *   </td>
              * </tr>
              */}
-          </tbody>
+          />
         </table>
         <p className="lead">
           <strong>Total Cost: {/* Complete me */}</strong>
