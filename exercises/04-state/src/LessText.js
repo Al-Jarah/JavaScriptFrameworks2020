@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+
 function LessText({ text, maxLength }) {
   const [less, setLess] = useState(true);
   function truncateText() {
