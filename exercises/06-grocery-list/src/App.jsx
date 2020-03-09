@@ -8,9 +8,7 @@ const GroceryList = () => {
   const [groceryList,setGroceryList] = useState([]);
 
 
-  const newItem = () => {
-   
-  };
+  
   const updateItem = (userInput, index) => {
     const newgroceryItem = [...groceryItem];
     newgroceryItem[index] = userInput;
@@ -75,11 +73,9 @@ const GroceryList = () => {
             </tr>
           </thead>
           <tbody
-          groceryList.map({userInput, inedx}=>{
-          return ({groceryItem.map(userInput, index) => {
-               <td> {groceryItem}</td>
-          }});
-          }
+          {groceryList.map((userInput, inedx) => {
+          return (<td> {groceryItem}</td>)
+          })};
             {/**
              * Complete me. (You can use something else instead of a table if you like)
              * @example
