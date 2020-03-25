@@ -1,5 +1,5 @@
 // Import useEffect here
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 // import Axios (or use Fetch)
 
@@ -18,7 +18,7 @@ function App() {
   /**
    * You may need to set something else in state
    */
-
+const []
   /**
    * Make an AJAX call with the useEffect hook
    */
@@ -27,6 +27,7 @@ function App() {
     <div className="App">
       <h1>Dogs</h1>
       {/* Attach an event handler */}
+
       <select>
         <option>1</option>
         <option>2</option>
