@@ -12,23 +12,27 @@
 
 import React from "react";
 // import some things from React Router
+import { Switch, Route } from "react-router-dom"; 
 import Home from "../Home/Home";
 import Category from "../Category/Category";
 
 function App() {
-  /**
-   * Next, you will need to setup your routes here.
-   * YOU SHOULD ONLY USE <Route> TWICE.
-   *
-   * - "/" should map to "Home"
-   * - "/category/food" should map to "Category"
-   * - "/category/clothing" should map to "Category"
-   * - "/category/office" should map to "Category"
-   */
+  
+  //  Next, you will need to setup your routes here.
+  //  YOU SHOULD ONLY USE <Route> TWICE.
+  //  "/" should map to "Home"  
+  //   - "/category/food" should map to "Category"
+  //   - "/category/clothing" should map to "Category"
+  //  - "/category/office" should map to "Category"
+   
   return (
     <>
       <div className="bg-success text-white pt-1 pb-1 mb-3">
         <h1 className="container h2">NoName E-Commerce</h1>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/category/:category" component={Category} />
+        </Switch>
       </div>
       <main className="container mb-4">{/* Complete me */}</main>
     </>
