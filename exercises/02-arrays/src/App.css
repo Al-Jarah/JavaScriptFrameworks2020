@@ -1,3 +1,8 @@
-/**
- * Write your CSS here
- */
+
+ /* responsive css */
+.App{
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+    align-self: center;
+}

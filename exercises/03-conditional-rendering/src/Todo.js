@@ -1,6 +1,6 @@
 import React from "react";
 
-function Todo ({todos, showCompleted}) {
+const Todo = ({todos, showCompleted})=> {
 
 return todos.map((todo,index)=>{
 

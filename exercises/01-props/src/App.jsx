@@ -4,9 +4,8 @@ import Welcome from "./component"
 // import something here
 
 function App() {
-  return <div className="App"><Welcome 
-    name = "Jamal"
-    />
+  return <div className="App">
+    <Welcome name = "Jamal"/>
     <Welcome />
     </div>;
 }

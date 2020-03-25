@@ -1,11 +1,13 @@
 import React from "react";
 import Todo from "./Todo";
-import {todos} from "./data/todos";
+import { todos } from "./data/todos";
+import  "./App.css"
 // import another thing
+
 
 function App() {
   return <div className="App">{
-    <Todo todos={todos} showCompleted={false}/>
+    <Todo style={{ textAlign: 'center' }} todos={todos} showCompleted={false}/>
   }</div>;
 }
 
