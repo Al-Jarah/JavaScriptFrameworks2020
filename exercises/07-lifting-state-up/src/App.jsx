@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import Temperature from "./components/Temperature/Temperature";
 import Address from "./components/Address/Address";
