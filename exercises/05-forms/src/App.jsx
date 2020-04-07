@@ -15,11 +15,10 @@ function App() {
 
   const [displayMessage, setDisplayMessage] = useState(false);
   const handleSubmit = e => {
-    e.preventDefult();
+    e.preventDefault();
     setDisplayMessage(true);
 
   }
-
 
   return (
     <form className="container mt-4" onSubmit={handleSubmit}>
