@@ -1,8 +1,12 @@
-import React from "react";
 import PropTypes from "prop-types";
+import React from "react";
 
 function TemperatureDisplay(props) {
-  return <>{/* Complete me */}</>;
+  return (<><div className="h4">Current Temperature:</div>
+    <div className="h1">
+      {/* Using "props.___" for what I get from the parent */}
+      {props.temperature} &deg; {props.scale}
+    </div></>)
 }
 
 TemperatureDisplay.propTypes = {
