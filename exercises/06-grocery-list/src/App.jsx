@@ -16,7 +16,7 @@ const GroceryList = () => {
 
   const deleteItem = deleteIndex => {
     setGroceryList(
-      [...groceryList].filter((item, currentIndex) => currentIndex !== deleteIndex)
+      [...groceryList].filter((currentIndex) => currentIndex !== deleteIndex)
     );
   };
 
@@ -70,7 +70,6 @@ const GroceryList = () => {
         <h1 className="h4">Grocery List</h1>
         <table className="table table-compact">
           <thead>
-            {/* {groceryItem.map((item, index) =>{return()})} */}
             <tr>
               <th>Item</th>
               <th>Cost</th>

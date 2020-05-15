@@ -24,7 +24,9 @@ function App() {
   //   - "/category/food" should map to "Category"
   //   - "/category/clothing" should map to "Category"
   //  - "/category/office" should map to "Category"
-   
+  <div className="bg-success text-white pt-1 pb-1 mb-3">
+    <h1 className="container h2">NoName E-Commerce</h1>
+  </div>
   return (
     <>
       <div className="bg-success text-white pt-1 pb-1 mb-3">

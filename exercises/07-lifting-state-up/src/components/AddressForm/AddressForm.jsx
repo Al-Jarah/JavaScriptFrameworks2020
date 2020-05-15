@@ -1,6 +1,5 @@
 import PropTypes from "prop-types";
 import React from "react";
-
 // Import data from "assets/countries.json" and "assets/states.json" here
 import countries from "../../assets/countries";
 import states from "../../assets/states";
@@ -26,19 +25,19 @@ function AddressForm(props) {
    * - Use callback function(s) in props to update <App>'s state
    * - Add an event handler to handle form submission
    */
-  const handelChange = e => {
-    props.setFormValues(
-      {
-        ...props.formValues,
-        [e.target.name]: e.target.value
-      }
-    )
-  }
+  const handelChange = (e) => {
+    console.log(e.target.value)
+    props.setFormValues({
+      ...props.formValues,
+      [e.target.name]: e.target.value,
+    });
+    
+  };
 
-  const handelSubmit = e => {
+  const handelSubmit = (e) => {
     e.preventDefault();
     props.setDisplayResults(true);
-  }
+  };
 
   return (
     <form className="container mt-4" onSubmit={handelSubmit}>
@@ -95,7 +94,8 @@ function AddressForm(props) {
           type="text"
           className="form-control"
           value={props.formValues.city}
-          onChange={handelChange} />
+          onChange={handelChange}
+        />
       </div>
       <div className="form-group">
         <label htmlFor="state" className="control-label">
@@ -138,7 +138,8 @@ function AddressForm(props) {
           name="country"
           className="form-control"
           value={props.formValues.countries}
-          onChange={handelChange}>
+          onChange={handelChange}
+        >
           <option></option>
           {countries.map((state, idx) => {
             return <option key={`state-${idx}`}>{state}</option>;
@@ -153,7 +154,7 @@ function AddressForm(props) {
 }
 
 AddressForm.propTypes = {
-  setDisplayResults: PropTypes.func.isRequired
+  setDisplayResults: PropTypes.func.isRequired,
   // And others that you will need to pass in
 };
 

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import LoggedInContent from "../LoggedInContent/LoggedInContent";
 // You may need to import additional things here
+import axios  from 'Axios';
 
 function App() {
   /**
@@ -34,10 +35,29 @@ function App() {
      */
   };
 
-  const handleLoginRequest = e => {
-    /**
-     * Complete me.
-     */
+  const handleLoginRequest = e => { 
+    e.preventDefault();
+    setIsLoading(true);
+    setErrorMessage();
+
+    axios("http://localhost:3000/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/jason"
+      },
+      data: {
+        username,
+        password
+      }
+    })
+      .then(resp => login(resp.data.token))
+      .catch(err => {
+        console.error(err)
+        (!err.response || !err.response.data || !err.response.data.message) ? 
+          setErrorMessage("Oh no! An unexpected error occurred.") : setErrorMessage(err.response.data.message)
+        })
+        .then(() => setIsLoading(false))
+        
   };
 
   /**

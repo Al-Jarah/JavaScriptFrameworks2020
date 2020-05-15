@@ -1,44 +1,28 @@
-import React, { useState, useContext, createContext } from "react";
+import React, { createContext, useContext, useState } from "react";
 import "./App.css";
 import translations from "./assets/translations.json";
 
-/**
- * Declare createContext() here.
- */
+
+const TranslatorContext = createContext([]);
 
 function App() {
   /**
    * Set state here. (See useState in "CreateAccount" below.)
    */
+  const [language, setLanguage] = useState("en");
+  
+  return <TranslatorContext.Provider value={[language, setLanguage]}>
+    <CreateAccount/>
+  </TranslatorContext.Provider>
 
-  /**
-   * You will need to return more than just <CreateAccount />.
-   */
-  return <CreateAccount />;
 }
 
 function CreateAccount() {
   /**
    * You will need to replace "useState" with something else.
    */
-  const [language, setLanguage] = useState("en");
-
-  /**
-   * @see src/assets/translations.json
-   * @type {Object} this is an object of translations for a given language.
-   * If "language" is "en", it will be English translations.
-   * If "language" is "es", it will be Spanish translations.
-   * @example
-   * const t = translations["es"];
-   * console.log(t);
-   * // Result:
-   * {
-   *   "Create a New Account": "Crea una cuenta",
-   *   "It’s quick and easy.": "Es rápido y fácil.",
-   *    // ...
-   * }
-   */
-  const t = translations[language];
+  const [language, setLanguage] = useContext(TranslatorContext)
+  const t = translations[language]
 
   /**
    * You will not need to change anything below this line.
@@ -115,7 +99,7 @@ function CreateAccount() {
           <small>
             {
               t[
-                "By clicking Sign Up, you agree to our Terms, Data Policy and Cookies Policy. You may receive SMS Notifications from us and can opt out any time."
+              "By clicking Sign Up, you agree to our Terms, Data Policy and Cookies Policy. You may receive SMS Notifications from us and can opt out any time."
               ]
             }
           </small>

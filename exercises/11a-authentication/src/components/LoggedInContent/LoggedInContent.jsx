@@ -1,10 +1,26 @@
 // You may need to import additional things here
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import  axios  from 'Axios';
 
-function LoggedInContent(props) {
+function LoggedInContent() {
   const [movies, setMovies] = useState({});
   const [errorMessage, setErrorMessage] = useState("");
 
+  useEffect(()=>{
+  const token = localStorage.getItem("token")
+  axios("http://localhost:7000/jwt/movies", {
+    method: "GET",
+    headers: {
+      Authorized: `Bearer ${token}`,
+      "Content-Type": "application/jason"
+    }
+  })
+    .then(resp => setMovies(resp.data.data))
+    .catch(err => {
+      console.error(err)
+      setErrorMessage("Oh no! An unexpected error occurred.")
+    })
+}, [])
   /**
    * Make an AJAX request to http://localhost:7000/jwt/movies to get a list of movies.
    * Be sure to provide the token in the AJAX request.

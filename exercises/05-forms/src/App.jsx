@@ -4,27 +4,25 @@ import countries from "./assets/countries.json";
 import states from "./assets/states.json";
 
 function App() {
-
   const [values, setValues] = useState({});
-  const handleChange = e => {
+  const handleChange = (e) => {
     setValues({
       ...values,
-      [e.target.name]: e.target.value
-    })
+      [e.target.name]: e.target.value,
+    });
   };
 
   const [displayMessage, setDisplayMessage] = useState(false);
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setDisplayMessage(true);
-
-  }
+  };
 
   return (
     <form className="container mt-4" onSubmit={handleSubmit}>
       {/* You will need to handle form submission */}
       <div className="form-group">
-        {/* lable */}
+        {/* label */}
         <label htmlFor="firstName" className="control-label">
           First Name
         </label>
@@ -39,7 +37,7 @@ function App() {
         />
       </div>
       <div className="form-group">
-        {/* lable */}
+        {/* label */}
         <label htmlFor="lastName" className="control-label">
           Last Name
         </label>
@@ -76,7 +74,8 @@ function App() {
           City / Town
         </label>
         {/* input box */}
-        <input id="city"
+        <input
+          id="city"
           name="city"
           type="text"
           className="form-control"
@@ -94,18 +93,16 @@ function App() {
           name="state"
           className="form-control"
           value={values.state}
-          onChange={handleChange}>
+          onChange={handleChange}
+        >
           <option value=""> Please Select An option</option>
           {states.map((state, idx) => {
             return (
-              <option
-                value={state}
-                key={`state-${idx}`}>
+              <option value={state} key={`state-${idx}`}>
                 {state}
               </option>
             );
-          })
-          }
+          })}
         </select>
       </div>
 
@@ -125,29 +122,30 @@ function App() {
       </div>
 
       <div className="form-group">
-        {/* lable */}
+        {/* label */}
         <label htmlFor="country" className="control-label">
           Country
         </label>
         {/* Loop through the countries you imported here */}
-        <select id="country" 
-        name="country" 
-        className="form-control"
-        value={values.country}
-        onChange={handleChange}
-           >
+        <select
+          id="country"
+          name="country"
+          className="form-control"
+          value={values.country}
+          onChange={handleChange}
+        >
           {/* dropdown */}
           <option value=""> Please Select An option</option>
           {countries.map((country, idx) => {
-              return (
-                <option value={country} key={`countries-${idx}`}>
-                  {country}
-                </option>
-              );
-            })}
+            return (
+              <option value={country} key={`countries-${idx}`}>
+                {country}
+              </option>
+            );
+          })}
         </select>
       </div>
-      <button type="submit" className="btn btn-primary" >
+      <button type="submit" className="btn btn-primary">
         Submit
       </button>
 
@@ -160,7 +158,7 @@ function App() {
           Results:
           <ul className="list-unstyled mb-0">
             {Object.values(values).map((value, idx) => {
-              return <li key={`value-${idx}`}>{value}</li>
+              return <li key={`value-${idx}`}>{value}</li>;
             })}
           </ul>
         </div>

@@ -8,7 +8,8 @@ function Language() {
    * @see exercises/08a-context-api/src/App.jsx
    * @see solutions/08a-context-api/App.solutions.jsx
    */
-const[, setLanguage] = useContext(TranslatorContext);
+  const [, setLanguage] = useContext(TranslatorContext);
+  
   return (
     <>
       {/**
@@ -16,6 +17,7 @@ const[, setLanguage] = useContext(TranslatorContext);
        * @see exercises/08a-context-api/src/App.jsx
        * @see solutions/08a-context-api/App.solutions.jsx
        */}
+      
       <button type="button" className="btn btn-link btn-sm" onClick={() => {setLanguage("en")}}>
         English
       </button>

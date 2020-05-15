@@ -10,8 +10,7 @@ class Likes extends Component {
    *  Complete this function here to increment the likes counter
    *
    */
-
-  like = () => {};
+  like = () => { let likeButton = this.state.likes}
 
   render() {
     /**
@@ -21,7 +20,9 @@ class Likes extends Component {
     return (
       <div className="container mt-4 h1">
         <h3>Likes</h3>
-        <button className="btn btn-light">{this.state.likes} Likes</button>
+        <button onClick={likeButton + 1} className="btn btn-light">
+          {this.state.likes} Likes
+        </button>
       </div>
     );
   }

@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 
-
-function LessText({ text, maxLength }) {
+let LessText = ({ text, maxLength }) => {
   const [less, setLess] = useState(true);
-  function truncateText() {
+  let truncateText = () => {
     return text.substring(0, maxLength);
   }
   return (
@@ -13,6 +12,6 @@ function LessText({ text, maxLength }) {
       <button onClick={() => setLess(true)}>Read Less</button>
     </div>
   );
-}
+};
 
 export default LessText;
