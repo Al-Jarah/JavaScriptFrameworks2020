@@ -24,19 +24,17 @@ function App() {
   //   - "/category/food" should map to "Category"
   //   - "/category/clothing" should map to "Category"
   //  - "/category/office" should map to "Category"
-  <div className="bg-success text-white pt-1 pb-1 mb-3">
-    <h1 className="container h2">NoName E-Commerce</h1>
-  </div>
   return (
     <>
-      <div className="bg-success text-white pt-1 pb-1 mb-3">
-        <h1 className="container h2">NoName E-Commerce</h1>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/category/:category" component={Category} />
-        </Switch>
-      </div>
-      <main className="container mb-4">{/* Complete me */}</main>
+      <main className="container mb-4">
+        <div className="bg-success text-white pt-1 pb-1 mb-3">
+          <h1 className="container h2">NoName E-Commerce</h1>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/category/:category" component={Category} />
+          </Switch>
+        </div>
+      </main>
     </>
   );
 }
