@@ -1,16 +1,15 @@
-import React, { useEffect, useState, useContext } from "react"
-
+import React, { useEffect, useState, useContext } from "react";
+import { CookieContext } from "../Context/SessionContext";
+import { destroySessionCookie } from "../utils/Cookies.util";
 import axios from "axios";
-import { CookieContext } from '../Context/SessionContext'
 
-
-export const Users = ({ history }) => {
-  const [users, setUsers] = useState([])
-  const [errorMessage, setErrorMessage] = useState("")
+export const Movies = ({ history }) => {
+  const [movies, setMovies] = useState([]);
+  const [errorMessage, setErrorMessage] = useState("");
   /**
    * Getting the token (UUID) we stored in the Context API.
    */
-  const [uuid, setUUID] = useContext(CookieContext)
+  const [uuid] = useContext(CookieContext);
 
   useEffect(() => {
     /**
@@ -18,18 +17,21 @@ export const Users = ({ history }) => {
      * To prove that you are logged in, you must pass the token (UUID) in the API.
      */
     axios
-      .get("http://localhost:7000/cookie/users", {
+      .get("http://localhost:7000/cookie/movies", {
         /**
          * We could use the "Authorize" header like we did in the local storage example,
          * but I'm showing you an alternative way of doing this,
          * where you pass the token as a query parameter.
          */
         params: {
-          id: uuid // Try commenting me out and see what happens when no token is passed
-        }
+          id: uuid, // Try commenting me out and see what happens when no token is passed
+        },
+        headers: {
+          "Content-Type": "application/json",
+        },
       })
-      .then(resp => setUsers(resp.data.data))
-      .catch(err => {
+      .then((resp) => setMovies(resp.data.data))
+      .catch((err) => {
         console.error(err);
         setErrorMessage("Oh no! An unexpected error occurred.");
       });
@@ -42,7 +44,8 @@ export const Users = ({ history }) => {
         <button
           className="btn btn-primary"
           onClick={() => {
-            setUUID();
+            console.log({ history });
+            destroySessionCookie();
             history.push("/");
           }}
         >
@@ -53,13 +56,20 @@ export const Users = ({ history }) => {
         Notice that when you refresh the page, you are still logged in. That's
         because the token is stored inside of a cookie.
       </p>
-      {users.map(user => {
-        const key = `user-${user.id}`;
-        const name = `${user.firstName} ${user.lastName}`;
+      {Object.values(movies).map((movie, idx) => {
         return (
-          <div key={key}>
-            <img src={user.avatar} alt={name} />
-            <p>{name}</p>
+          <div className="media mb-3" key={`movie-${idx}`}>
+            <img
+              src={movie.poster}
+              alt={movie.title}
+              width="150"
+              height="220.875"
+              className="mr-3"
+            />
+            <div className="media-body">
+              <h2 className="h3">{movie.title}</h2>
+              <p>{movie.synopsis}</p>
+            </div>
           </div>
         );
       })}

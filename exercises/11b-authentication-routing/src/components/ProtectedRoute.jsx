@@ -22,7 +22,7 @@ export const ProtectedRoute = ({
   return (
     <Route
       {...restOfPropsFromParent}
-      render={propsFromReactRouter => {
+      render={(propsFromReactRouter) => {
         return uuid ? (
           /**
            * If the user is logged in, return the child component with the props from React Router.

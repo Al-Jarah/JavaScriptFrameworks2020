@@ -1,8 +1,8 @@
 import React from "react";
-import App from "../../../../examples/11c-authentication-routing/src/App";
+import App from "../App";
 import { Route, Switch } from "react-router-dom";
-import { Users } from "../View/Users";
-import { CookieProvider } from ".src/Context/SessionContext";
+import { Movies } from "../View/Movies";
+import { CookieProvider } from "../Context/SessionContext";
 import { ProtectedRoute } from "../components/ProtectedRoute";
 
 export const Routes = () => {
@@ -15,7 +15,7 @@ export const Routes = () => {
          * Using a protected route for the content that user needs to be logged in to see
          * @see examples/11c-authentication-routing/src/components/ProtectedRoute.js
          */}
-        <ProtectedRoute exact path="/Cookie/Users" component={Users} />
+        <ProtectedRoute exact path="/cookie/movies" component={Movies} />
       </Switch>
     </CookieProvider>
   );
