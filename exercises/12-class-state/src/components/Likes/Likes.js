@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./Likes.css";
+// import "./Likes.css";
 
 class Likes extends Component {
   state = {
@@ -10,7 +10,8 @@ class Likes extends Component {
    *  Complete this function here to increment the likes counter
    *
    */
-  like = () => { let likeButton = this.state.likes}
+
+  like = () => {this.setState({ likes: this.state.likes + 1 })};
 
   render() {
     /**
@@ -20,9 +21,7 @@ class Likes extends Component {
     return (
       <div className="container mt-4 h1">
         <h3>Likes</h3>
-        <button onClick={likeButton + 1} className="btn btn-light">
-          {this.state.likes} Likes
-        </button>
+        <button className="btn btn-light" onClick={this.like}>{this.state.likes} Likes</button>
       </div>
     );
   }
