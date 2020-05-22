@@ -3,7 +3,7 @@ import "./App.css";
 
 const GroceryList = () => {
   /**
-   * @constant {array} gorceryList array of nested objects, where each object represents something in a list
+   * @constant {array} groceryList array of nested objects, where each object represents something in a list
    * @example
    * [
    *    {
@@ -16,7 +16,7 @@ const GroceryList = () => {
    *    }
    * ]
    */
-  const [gorceryList, setGroceryList] = useState([]);
+  const [groceryList, setGroceryList] = useState([]);
   /**
    * @constant name what the user is typing in the "Name of grocery item..." textbox
    */
@@ -32,10 +32,10 @@ const GroceryList = () => {
 
   const addToList = () => {
     /**
-     * Adds new item and cost to gorceryList
+     * Adds new item and cost to groceryList
      */
     setGroceryList([
-      ...gorceryList,
+      ...groceryList,
       {
         name,
         cost: parseFloat(cost) // Converting string to number so that I don't run into TypeErrors with calcTotal() below
@@ -50,7 +50,7 @@ const GroceryList = () => {
 
   const deleteFromList = indexToDelete => {
     setGroceryList(
-      [...gorceryList].filter((item, index) => index !== indexToDelete)
+      [...groceryList].filter((item, index) => index !== indexToDelete)
     );
   };
 
@@ -61,7 +61,7 @@ const GroceryList = () => {
      * If you are unfamiliar with reduce,
      * @see https://www.airpair.com/javascript/javascript-array-reduce
      */
-    return gorceryList.reduce((total, item) => {
+    return groceryList.reduce((total, item) => {
       return total + item.cost;
     }, 0);
   };
@@ -133,7 +133,7 @@ const GroceryList = () => {
              *   </td>
              * </tr>
              */}
-            {gorceryList.map((item, index) => {
+            {groceryList.map((item, index) => {
               return (
                 <tr key={`item-${item}`}>
                   <td>{item.name}</td>
