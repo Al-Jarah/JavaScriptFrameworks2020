@@ -42,7 +42,7 @@ NOTE that instead of users, you will be rendering a list of movies.
 
 ## Acceptance Criteria
 
-- After the user submits the login form, you must make an AJAX request to http://localhost:7000/jwt/login to login the user.
+- After the user submits the login form, you must make an AJAX request to  to login the user.
 - If the user typed in an invalid username or password, you must display an error message telling them this.
 - You will be getting a token from http://localhost:7000/jwt/login API. You should store this in either local storage or within a secure cookie.
 - Once the user has logged in, they should see a list of movies.

@@ -48,8 +48,8 @@ function App() {
 
   const handleLoginRequest = e => {
     e.preventDefault();
-    setIsLoading(true);
-    setErrorMessage("");
+    // setIsLoading(true);
+    // setErrorMessage("");
 
     axios("http://localhost:7000/jwt/login", {
       method: "POST",
