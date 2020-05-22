@@ -18,17 +18,25 @@ function App() {
   /**
    * You may need to set something else in state
    */
-const []
+  const [amountOfImages, setAmountOfImages]= useState(1);
   /**
    * Make an AJAX call with the useEffect hook
    */
+  useEffect(() => {
+    fetch(`https://dog.ceo/api/breeds/image/random/${amountOfImages}`)
+      .then(resp => resp.json())
+      .then(resp => setDogImages(resp.message))
+      .catch(data => {
+       console.log('error');
+    });
+  }, [amountOfImages]);
 
   return (
     <div className="App">
       <h1>Dogs</h1>
       {/* Attach an event handler */}
 
-      <select>
+      <select onChange={e => setAmountOfImages(e.target.value)}>
         <option>1</option>
         <option>2</option>
         <option>3</option>
@@ -43,7 +51,7 @@ const []
       <div className="container">
         {dogImages &&
           dogImages.map((dogImage, idx) => {
-            return <img key={`dog-${idx}`} height="200" src={dogImage} />;
+            return <img alt={`dogs`} key={`dog-${idx}`} height="200" src={dogImage} />;
           })}
       </div>
     </div>

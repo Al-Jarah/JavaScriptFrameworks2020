@@ -11,9 +11,7 @@ function App() {
   const [amountOfImages, setAmountOfImages] = useState(1);
 
   useEffect(() => {
-    /**
-     * @see https://dog.ceo/dog-api/documentation/random#all
-     */
+    
     fetch(`https://dog.ceo/api/breeds/image/random/${amountOfImages}`)
       .then(resp => resp.json())
       .then(resp => setDogImages(resp.message));
